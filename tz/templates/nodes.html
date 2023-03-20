@@ -1,0 +1,44 @@
+{% extends 'main.html' %}
+
+{% block title %}
+Просмотр эелемента
+{% endblock %}
+
+{%block body %}
+<div class="container mt-5">
+    {% if category == 'c' %}
+    <div class="card container">
+        <h1>{{items.name}}</h1>
+        <h3>Идентефикатор: {{items.id}}</h3>
+        <p>Дата последнего изменения: {{items.date}}</p>
+        <p>Средняя цена категории: {{items.value}}</p>
+        <div class="row">
+            <a href="/node/{{items.id}}/statistic" class="btn btn-warning col">История изменений</a>
+            <a href="/delete/{{items.id}}" class="btn btn-danger col">Удалить</a>
+        </div>
+    </div>
+    <br>
+    <h2>Дочерние элементы:</h2>
+    <br>
+    {% for child in childs %}
+    <div class="card">
+        <h1>{{child.name}}</h1>
+        <h3>Идентефикатор: {{child.id}}</h3>
+        <a href="/nodes/{{child.id}}" class="btn btn-warning">Подробнее</a>
+    </div>
+    <br>
+    {% endfor %}
+    {% else %}
+    <div class="card container">
+        <h1>{{items.name}}</h1>
+        <h3>Идентефикатор: {{items.id}}</h3>
+        <p>Дата последнего изменения: {{items.date}}</p>
+        <p>Цена: {{items.price}}</p>
+        <div class="row">
+            <a href="/node/{{items.id}}/statistic" class="btn btn-warning col">История изменений</a>
+            <a href="/delete/{{items.id}}" class="btn btn-danger col">Удалить</a>
+        </div>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

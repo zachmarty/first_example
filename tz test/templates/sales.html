@@ -1,0 +1,22 @@
+{% extends 'main.html' %}
+
+{% block title %}
+Товары за последние 24 часа
+{% endblock %}
+
+{%block body %}
+<div class="container mt-5">
+    {% for good in goods %}
+    <div class="card">
+        <h1>{{good.name}}</h1>
+        <h4>Идентефикатор: {{good.id}}</h4>
+        <p>Цена: {{good.price}}</p>
+        <p>Дата последнего изменения: {{good.date}}</p>
+        <p>Категория: {{good.parent_id}}</p>
+        <a href="/node/{{good.id}}/statistic" class="btn btn-warning">Подробнее</a>
+    </div>
+    {% endfor %}
+</div>
+<h1 class="display-5 fw-bold text-center">
+</h1>
+{% endblock %}

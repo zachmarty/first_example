@@ -1,0 +1,54 @@
+{% extends 'main.html' %}
+
+{% block title %}
+История обновлений
+{% endblock %}
+
+{%block body %}
+
+<div class="container mt-5">
+    {% if category == 'g' %}
+    <div class="container card">
+        <h1>Текущаяя версия:</h1>
+        <h1>{{item.name}}</h1>
+        <p>Цена: {{item.price}}</p>
+        <p>Родитель: {{item.parent_id}}</p>
+        <p>Изменение: {{temps_beg[counter].name}}</p>
+    </div>
+    {% for i in range(counter) %}
+    <div class="container mt-5 card">
+        <p>
+            Изменение {{temps_beg[counter - i-1].name}}
+        </p>
+        <p>
+            существует с {{temps_beg[counter - i-1].begining_date}}
+        </p>
+        <p>
+            до {{temps_end[counter -i-1].ending_date}}
+        </p>
+    </div>
+    {% endfor %}
+    {% else %}
+    <div class="container mt-5 card">
+        <h1>Текущая версия:</h1>
+        <h1>{{item.name}}</h1>
+        <p>Родитель: {{item.parent_id}}</p>
+        <p>Средняя цена категории: {{item.value}}</p>
+        <p>Изменение: {{temps_beg[counter].name}}</p>
+    </div>
+    {% for i in range(counter) %}
+    <div class="container mt-5 card">
+        <p>
+            Изменение {{temps_beg[counter - i - 1].name}}
+        </p>
+        <p>
+            существует с {{temps_beg[counter - i - 1].begining_date}}
+        </p>
+        <p>
+            до {{temps_end[counter - i - 1].ending_date}}
+        </p>
+    </div>
+    {% endfor %}
+    {% endif %}
+</div>
+{% endblock %}

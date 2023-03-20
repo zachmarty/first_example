@@ -1,0 +1,18 @@
+{% extends 'main.html' %}
+
+{% block title %}
+Страница создания товара
+{% endblock %}
+
+{%block body %}
+<h1 class="display-5 fw-bold text-center">Содание  или категорий</h1>
+<div class="text-center">
+    <form action="/check" method="post">
+        <input type="text" name="id" class="form-control text-center" placeholder="Введите id (обязательно)"><br>
+        <textarea name="name" class="form-control text-center" placeholder="Введите название"></textarea><br>
+        <input type="text" name="price" class="form-control text-center" placeholder="Введите цену (оставьте пустым если вводите категорию)"><br>
+        <input type="text" name="parent_id" class="form-control text-center" placeholder="Введите id родителя (id категории)"><br>
+        <input type="submit" class="btn btn-succes text-center" value="Отправить">
+    </form>
+</div>
+{% endblock %}
